@@ -68,7 +68,7 @@ a.article-title:hover {
   vertical-align: middle;
 }
 
-.account-img {
+.profile-img {
   height: 125px;
   width: 125px;
   margin-right: 20px;
@@ -120,4 +120,15 @@ a.article-title:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, 0%)
+}
+
+.link-icon{
+  color: #0060B6;
+  text-decoration: none;
+}
+
+.link-icon:hover {
+  color:#00A0C6; 
+  text-decoration:none; 
+  cursor:pointer;  
 }

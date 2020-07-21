@@ -1,8 +1,33 @@
 {% extends 'layout.html' %}
 {% block content %}
+  <div class = "content-section">
+    <div class = "media">
+      <img class = "rounded-circle profile-img" 
+        src="{{ url_for('static', filename='images/profile-pic.jpeg') }}">
+      <div class = "media-body">
+        <h2>Carlos Huerta</h2>
+        <p>Insert a very small bio here!</p>
+        <span class="author-location"><i class="fa fa-location-arrow"></i> Netherlands</span>
+        <span class="author-website">
+          <a class="link-icon" href="http://google.com">
+            <i class="fa fa-firefox"></i> Website
+          </a>
+        </span>
+        <span class="author-github">
+          <a class="link-icon" target="_blank" href="https://github.com/charx7/">
+            <i class="fa fa-github"></i> GitHub
+          </a>
+        </span>
+        <span class="author-stats"><i class="fa fa-pencil"></i> X posts </span>
+      </div>
+    </div>
+  </div>
   {% for post in posts %}
-    <h1>{{ post.title }}</h1>
-    <p>By {{ post.author }} on {{ post.date }}</p>
-    <p>{{ post.content }}</p>
+    <div class="content-section">
+      <h1>{{ post['title'] }}</h1>
+      <p>By {{ post.author }} on {{ post.date }}</p>
+      <p>{{ post.content }}</p>  
+    </div>
+    
   {% endfor %}
 {% endblock content %}
