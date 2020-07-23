@@ -134,3 +134,11 @@ a.article-title:hover {
 }
 
 .right-footer {float: right;}
+
+.input { 
+  background-color: #E0E0E0; /* gray 300 */
+  padding-left: 10px;
+  text-align: center;
+  font-size: 85%;
+  margin: 0;
+}

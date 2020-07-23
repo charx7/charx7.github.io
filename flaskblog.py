@@ -31,9 +31,10 @@ def post(post_id):
 
   if found_post:
     # CSS addition for syntax highlighting
-    formatter = HtmlFormatter(style="colorful", full=True, cssclass="codehilite")
-    css_string = formatter.get_style_defs()
-    md_css_string = "<style>" + css_string + "</style>"
+    # formatter = HtmlFormatter(style="colorful", full=True, cssclass="codehilite")
+    # css_string = formatter.get_style_defs()
+    # md_css_string = "<style>" + css_string + "</style>"
+    md_css_string = ''
     
     return render_template('post.html', title = post['title'], post = found_post, 
       code_css = md_css_string )

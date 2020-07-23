@@ -1,4 +1,7 @@
 import markdown
+import markdown.extensions.fenced_code
+import markdown.extensions.codehilite
+
 import os
 
 CONTENT_PATH = "content/blog/"

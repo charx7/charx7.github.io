@@ -10,12 +10,15 @@ date: Jul 17 2000
 
 Lorem Ipsum
 
+<div class="input">
+  src/example/file.py
+</div>
 ```python
 import os
 print("holi poli")
 ```
 
 Otro ejemplo pero de linea de comando
-```sh
+```bash
 pip install algo
 ```
