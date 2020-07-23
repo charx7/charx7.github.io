@@ -142,3 +142,12 @@ a.article-title:hover {
   font-size: 85%;
   margin: 0;
 }
+
+.small-bio-icon {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.small-bio-icon-first {
+  padding-right: 0.5rem;
+}

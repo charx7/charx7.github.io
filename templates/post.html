@@ -3,6 +3,25 @@
   <div class="content-section">
     <h1>{{ post['title'] }}</h1>
     <p>By {{ post.author }} on {{ post.date }}</p>
-    <div>{{ post.html | safe}}</div>  
+    <div>{{ post.html | safe}}</div>
+    
+    <br>
+    <!-- Needed for disqus-->
+    <div id="disqus_thread"></div>
+
   </div>
 {% endblock content %}
+
+{% block disqus %}
+<!--
+<script>
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://carlos-huerta-blog.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->                          
+{% endblock disqus %}

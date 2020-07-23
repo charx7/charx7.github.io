@@ -6,19 +6,24 @@
         src="{{ url_for('static', filename='images/profile-pic.jpeg') }}">
       <div class = "media-body">
         <h2>Carlos Huerta</h2>
-        <p>Insert a very small bio here!</p>
-        <span class="author-location"><i class="fa fa-location-arrow"></i> Netherlands</span>
-        <span class="author-website">
+        <p>{{ bio_small }}</p>
+        <span class="author-location small-bio-icon-first"><i class="fa fa-location-arrow"></i> Netherlands</span>
+        <span class="author-website small-bio-icon">
           <a class="link-icon" href="http://google.com">
             <i class="fa fa-firefox"></i> Website
           </a>
         </span>
-        <span class="author-github">
+        <span class="author-github small-bio-icon">
           <a class="link-icon" target="_blank" href="https://github.com/charx7/">
             <i class="fa fa-github"></i> GitHub
           </a>
         </span>
-        <span class="author-stats"><i class="fa fa-pencil"></i> X posts </span>
+        <span class="author-linkedin small-bio-icon">
+          <a class="link-icon" target="_blank" href="https://www.linkedin.com/in/carlos-rodolfo-huerta-santiago-2b5609100/">
+            <i class="fa fa-linkedin"></i> Linkedin
+          </a>
+        </span>
+        <span class="author-stats small-bio-icon"><i class="fa fa-pencil"></i> {{ num_posts }} posts </span>
       </div>
     </div>
   </div>

@@ -36,6 +36,8 @@
         <div class="collapse navbar-collapse" id="navbarToggle">
           <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="/about">About</a>
+            <a class="nav-item nav-link" href="/home">Blog</a>
+            <a class="nav-item nav-link" href="/portfolio">Portfolio</a>
           </div>
           <!-- Navbar Right Side 
           <div class="navbar-nav">
@@ -89,5 +91,9 @@
     <!--  BS js -->
     <script type="text/javascript"
       src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+    {% block disqus %}
+    {% endblock disqus %}
+
   </body>
 </html>

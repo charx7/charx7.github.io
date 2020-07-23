@@ -9,13 +9,26 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def home():
+  bio_small = """
+  Data Science and Machine Learning Enthusiast, 
+  currently working with Dynamic Bayesian Networks models for gene network reconstruction.
+  Love programming, modelling, web-development and data engineering.
+  Curious for A.I. research - model explainability and Natural Language Processing.
+
+  Ensembles over Deep Neural Networks!
+  """
+
   blog_posts = get_blog_posts()
 
-  return render_template('home.html', posts=blog_posts)
+  return render_template('home.html', posts=blog_posts, num_posts=len(blog_posts), bio_small=bio_small)
 
 @app.route("/about")
 def about():
   return render_template('about.html', title='About')
+
+@app.route("/portfolio")
+def portfolio():
+  return render_template('portfolio.html', title='Portfolio')
 
 @app.route("/post/<post_id>")
 def post(post_id):
