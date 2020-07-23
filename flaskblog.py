@@ -7,8 +7,8 @@ from utils import get_blog_posts
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/home")
-def home():
+@app.route("/index.html")
+def index():
   bio_small = """
   Data Science and Machine Learning Enthusiast, 
   currently working with Dynamic Bayesian Networks models for gene network reconstruction.
@@ -22,15 +22,15 @@ def home():
 
   return render_template('home.html', posts=blog_posts, num_posts=len(blog_posts), bio_small=bio_small)
 
-@app.route("/about")
+@app.route("/about.html")
 def about():
   return render_template('about.html', title='About')
-
-@app.route("/portfolio")
+  
+@app.route("/portfolio.html")
 def portfolio():
   return render_template('portfolio.html', title='Portfolio')
 
-@app.route("/post/<post_id>")
+@app.route("/post/<post_id>/")
 def post(post_id):
   # Get the specific post from the list of posts
   blog_posts = get_blog_posts()
