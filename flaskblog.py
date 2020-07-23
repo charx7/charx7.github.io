@@ -1,22 +1,9 @@
-from flask import Flask, render_template
+import json
+
+from flask import Flask, render_template, redirect, url_for, abort
 from utils import get_blog_posts
 
 app = Flask(__name__)
-
-# posts = [
-#   {
-#     'author': 'Carlos H',
-#     'title': 'First post title',
-#     'content': 'First post content',
-#     'date': 'Jul 17 2020'
-#   },
-#   {
-#     'author': 'Carlos H',
-#     'title': 'Second post title',
-#     'content': 'Second post content',
-#     'date': 'Jul 17 2020'
-#   }
-# ]
 
 @app.route("/")
 @app.route("/home")
@@ -29,5 +16,29 @@ def home():
 def about():
   return render_template('about.html', title='About')
 
+@app.route("/post/<post_id>")
+def post(post_id):
+  # Get the specific post from the list of posts
+  blog_posts = get_blog_posts()
+
+  print('the type of the post id is: ', type(post_id))
+  found_post = None
+  for post in blog_posts:
+    if post_id == post['post_id']:
+      print('Found the post')
+      found_post = post
+
+  if found_post:
+    print('you should render template')
+    return render_template('post.html', title = post['title'], post = found_post)
+  else:
+    return abort(404)
+
+# error handling route
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 if __name__ == "__main__":
   app.run(debug=True)
+  

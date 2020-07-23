@@ -1,10 +1,11 @@
 ---
 type: blog_post
+post_id: 1
 author: Carlos Huerta 
 title: First Blog Post Title
 date: Jul 17 2000
 ---
 
-## First Blog Post
+## Lorem Ipsum
 
 Lorem Ipsum

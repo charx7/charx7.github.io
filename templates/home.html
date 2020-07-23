@@ -24,8 +24,10 @@
   </div>
   {% for post in posts %}
     <div class="content-section">
-      <h1>{{ post['title'] }}</h1>
+      <h1><a class="article-title" 
+        href="{{ url_for('post', post_id = post.post_id)  }}">{{ post['title'] }}</a></h1>
       <p>By {{ post.author }} on {{ post.date }}</p>
+      <!-- This should be a quick summary-->
       <p>{{ post.content }}</p>  
     </div>
     
