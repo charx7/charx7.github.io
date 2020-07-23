@@ -9,3 +9,13 @@ date: Jul 17 2000
 ## Lorem Ipsum
 
 Lorem Ipsum
+
+```python
+import os
+print("holi poli")
+```
+
+Otro ejemplo pero de linea de comando
+```sh
+pip install algo
+```

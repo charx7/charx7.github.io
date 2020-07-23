@@ -14,6 +14,12 @@
       <!-- Font Awsome CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
+
+  <!-- Pigments for code CSS -->
+  {% if code_css %}
+    {{ code_css | safe }}
+  {% endif %}
+
   <body>
     <header class="site-header"></header>
 
@@ -27,11 +33,12 @@
           <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="/about">About</a>
           </div>
-          <!-- Navbar Right Side -->
+          <!-- Navbar Right Side 
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="/login">Login</a>
             <a class="nav-item nav-link" href="/register">Register</a>
           </div>
+          -->
         </div>
       </div>
     </nav>
@@ -55,6 +62,17 @@
           <small class="text-muted">
               Made with ❤️ using flask, frozen-flask, Bootstrap
           </small>
+
+          <div class="right-footer">
+            <a href="https://github.com/charx7" style="color: black!important; text-decoration: none;">
+              <i class="fa fa-github" style="padding-right: 16px"></i>
+            </a>
+    
+            <a href="https://www.linkedin.com/in/carlos-rodolfo-huerta-santiago-2b5609100/" style="color: black!important; text-decoration: none">
+              <i class="fa fa-linkedin" style="padding-right: 16px"></i>
+            </a>
+          </div>
+          
         </div>
       </div>
     </div>

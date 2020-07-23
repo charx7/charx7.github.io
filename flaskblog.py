@@ -1,6 +1,7 @@
 import json
 
 from flask import Flask, render_template, redirect, url_for, abort
+from pygments.formatters import HtmlFormatter
 from utils import get_blog_posts
 
 app = Flask(__name__)
@@ -29,8 +30,13 @@ def post(post_id):
       found_post = post
 
   if found_post:
-    print('you should render template')
-    return render_template('post.html', title = post['title'], post = found_post)
+    # CSS addition for syntax highlighting
+    formatter = HtmlFormatter(style="colorful", full=True, cssclass="codehilite")
+    css_string = formatter.get_style_defs()
+    md_css_string = "<style>" + css_string + "</style>"
+    
+    return render_template('post.html', title = post['title'], post = found_post, 
+      code_css = md_css_string )
   else:
     return abort(404)
 

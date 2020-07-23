@@ -132,3 +132,5 @@ a.article-title:hover {
   text-decoration:none; 
   cursor:pointer;  
 }
+
+.right-footer {float: right;}

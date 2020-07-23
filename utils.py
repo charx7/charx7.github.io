@@ -19,7 +19,7 @@ def transform_content(PATH_TO_CONTENT):
   with open(PATH_TO_CONTENT, "r") as file:    
     content_file = file.read()
     # create the md obj
-    md = markdown.Markdown(extensions = ["fenced_code", "codehilite", "toc", 'meta'])
+    md = markdown.Markdown(extensions = ["codehilite", "fenced_code", 'meta'])
     
     html = md.convert(content_file)
     
