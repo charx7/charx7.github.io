@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
   <div class="content-section">
-    <h1>{{ post['title'] }}</h1>
+    <h2>{{ post['title'] }}</h2>
     <p>By {{ post.author }} on {{ post.date }}</p>
     <div>{{ post.html | safe}}</div>
     
