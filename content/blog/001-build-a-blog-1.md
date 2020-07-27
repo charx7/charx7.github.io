@@ -25,7 +25,7 @@ source activate
 ```
 
 Now the text `(blog-env)` or any other name you gave the venv will be appearing before your bash prompt, but if you need to verify, I'd suggest running the `which` command just to make sure of it.
-```
+```bash
 which pip
 ```
 This command should point to pip inside your virtual environment and not to the pip in your home directory. Now we can proceed to install all the required dependencies of our project:

@@ -17,11 +17,12 @@ Similar to Amazon's "People who also bought X also bought Y..." that displays wh
 We are going to use the **Big Data Europe** docker-spark container images as base images for our project. Nevertheless we need to set-up a folder structure as follows:
 
 ### 1.1 Spark-master set-up
-* Create a `spark_master` directory, inside it create a `dockerfile` and a `master.sh` file. 
+Create a `spark_master` directory, inside it create a `dockerfile` and a `master.sh` file. 
+
 <div class="input">
   MY_PROJECT_NAME/spark_master/dockerfile
 </div>
-```
+```docker
 FROM bde2020/spark-base:2.4.0-hadoop2.7
 
 COPY master.sh /
@@ -34,10 +35,11 @@ EXPOSE 8080 7077 6066
 
 CMD ["/bin/bash", "/master.sh"]
 ```
-The `dockerfile` pulls a base docker image from dockerhub and sets some necessary environmental variables 
+The `dockerfile` pulls a base docker image from dockerhub and sets some necessary environmental variables. 
+
 * `SPARK_MASTER_PORT`: defines in which port (inside the docker container) will our spark master run.
-* `SPARK_MASTER_WEBUI_PORT`: defines the port to access the web UI
-* `SPARK_MASTER_LOG`: the logs route
+* `SPARK_MASTER_WEBUI_PORT`: defines the port to access the web UI.
+* `SPARK_MASTER_LOG`: the logs route.
 
 `EXPOSE` tells which container ports we are going to expose. `8080` for the web UI, `7077` to connect to the spark-master and `6066` is the spark-master port for the REST URL.
 
@@ -64,12 +66,13 @@ cd /spark/bin && /spark/sbin/../bin/spark-class org.apache.spark.deploy.master.M
 ```
 This bash script executes spark scripts that will load the configuration and the spark environment; you can inspect them by executing a shell inside the container(more on this later as it is a handy debugging tool for docker related issues), then makes a directory for our logs and sets the necessary `SPARK_HOME` environmental variable inside our docker container. Finally, it will execute spark binaries using the previously defined environmental variables. TLDR: This script executes our spark-master for us.
 
-* ### 1.2 Spark-workers set-up
+### 1.2 Spark-workers set-up
 In the root of your project create a directory `spark_worker` and create a `dockerfile`.
+
 <div class="input">
   MY_PROJECT_NAME/spark_worker/dockerfile
 </div>
-```
+```docker
 FROM bde2020/spark-base:2.4.0-hadoop2.7
 
 COPY worker.sh /
@@ -96,6 +99,7 @@ CMD ["/bin/bash", "/worker.sh"]
 For this dockerfile, we need to set the `SPARK_MASTER`` SPARK_WORKER_WEBUI_PORT` and `SPARK_WORKER_LOG` environmental variables, we also copy and install requirements declared on a requirements.txt file (OPTIONAL), this could be useful if your project has external dependencies that you wish to install on every worker. We will be exposing the port `8081` inside our container and will define the map to the external port on the docker=compose file (part 2).
 
 As in the `spark_master` directory, we will also add a script file.
+
 <div class="input">
   MY_PROJECT_NAME/spark_worker/worker.sh
 </div>
@@ -128,7 +132,7 @@ To submit a spark job with the appropriate structure and dependencies, we need t
 <div class="input">
   MY_PROJECT_NAME/pyspark_src/
 </div>
-```
+```bash
 tree
 .
 ├── Dockerfile
@@ -140,12 +144,13 @@ tree
 └── template.sh
 ```
 Here the directory `pyspark_recom_engine` will be where the logic of our package will live. In order for this to work, we need to set-up the following files:
+
 <div class="input">
   MY_PROJECT_NAME/pyspark_src/Dockerfile
 </div>
-```
+```docker
 # Will extend form the spark-template that extends on itself with the spark-submit image
-#FROM bde2020/spark-python-template:2.4.0-hadoop2.7
+# FROM bde2020/spark-python-template:2.4.0-hadoop2.7
 # Using an image before (the one that has the python reqs install)
 FROM bde2020/spark-submit:2.4.0-hadoop2.7 
 
@@ -176,6 +181,7 @@ ENV SPARK_SUBMIT_ARGS="--packages org.mongodb.spark:mongo-spark-connector_2.11:2
 CMD ["/bin/bash","/template.sh","/submit.sh"]
 ```
 Unlike our previous Dockerfiles this one is a little bit more complicated, but bear with me. At first we will be extending our image from the base BDE spark images and copying the entire source code into the container. Then we need to define the following environmental variables inside the container:
+
 * `SPARK_MASTER_NAME`: Defines the name given to our spak-master, we could have changed this variable inside our docker image for our spark-master.
 * `SPARK_MASTER_PORT`: The port inside the container from which the spark-master is being executed.
 * `SPARK_MASTER_URL`: The URL to access the spark master.
@@ -184,6 +190,7 @@ Unlike our previous Dockerfiles this one is a little bit more complicated, but b
 * `SPARK_SUBMIT_ARGS`: The actual submit arguments that will be run by the submit bash script. Since we are going to be using mongodb in the future we are going to import the spark mongo connector. More on how `pyspark_recom_engine-0.1-py3.6.egg` gets built will follow.
 
 That was a lot, wasn't it? Well, we aren't finished yet, we still need to define a few more files.
+
 <div class="input">
   MY_PROJECT_NAME/pyspark_src/setup.py
 </div>
@@ -217,6 +224,7 @@ setup(
 We are building a python package so we need a `setup.py` file that we will use to build our project into a python egg. The `name` variable could be anything, but since we created a `pyspark_recom_engine` directory, we will name our package that way. Remember the `pyspark_recom_engine-0.1-py3.6.egg` well, this is how it gets built, the `setup.py` file generates that name using the given `version` and `name` arguments as well as the current version of python in which it was built, this is why it is always a good idea to isolate your packages inside a virtual environment. 
 
 Finally the `template.sh` file:
+
 <div class="input">
   MY_PROJECT_NAME/pyspark_src/template.sh
 </div>
@@ -229,10 +237,11 @@ Is just a simple script that will execute the `submit.sh` script that was inheri
 
 ### 1.4 Putting it all together
 We are really close but not there yet... on the root of our project we need to create the following **docker-compose** file.
+
 <div class="input">
   MY_PROJECT_NAME/docker-compose.yml
 </div>
-```
+```docker-compose
 version: "3"
 
 services:
