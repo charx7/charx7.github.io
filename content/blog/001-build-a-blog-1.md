@@ -8,9 +8,9 @@ date: Jul 25 2020
 ---
 
 ### A blog post about building a blog
-To start-off this personal/portfolio page we are going to get 'meta' :emoji: we will dwell into the first series of blog-posts about :drum: how to make a static blog and deploy it into **github-pages**.
+To start-off this personal/portfolio page we are going to get 'meta' :emoji: we will dwell into the first series of blog-posts about 🥁 how to make a static blog and deploy it into **github-pages**.
 
-I have wanted to make a personal web-page for quite some time as well as *dust off* my web-dev skills :broom:, so I tried many multiple static web page generators to my surprise I didn't like any of them that much and I felt that many of them did give me the pedagogic purpose that I was looking for... At the end I ended up coding a static web-site from scratch as I felt that It would give me the best learning experience one can afford.
+I have wanted to make a personal web-page for quite some time as well as *dust off* my web-dev skills 🧹, so I tried many multiple static web page generators to my surprise I didn't like any of them that much and I felt that many of them did give me the pedagogic purpose that I was looking for... At the end I ended up coding a static web-site from scratch as I felt that It would give me the best learning experience one can afford.
 
 ## 1. Set-up a flask blog to be frozen
 The first thing that we need to do is to set-up a flask dev environment, the standard way would be to create a **virtual environment** and install all the required dependencies. I will be assuming you have python3 previously installed on your computer and that you are using bash commands, sorry windows users :P best switch to mac/linux before you start pulling your hair-off.
