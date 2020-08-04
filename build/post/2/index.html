@@ -4,7 +4,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173578745-1"></script>
     <script>
-      if (window.location.host==="charx7.github.io" || window.location.host === "www.charx7.github.io") {
+      if (window.location.host==="charx7.me" || window.location.host === "www.charx7.me") {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -218,6 +218,17 @@ sleep <span class="m">20</span>
 <span class="k">FROM</span> <span class="s">bde2020/spark-submit:2.4.0-hadoop2.7</span> 
 
 <span class="k">COPY</span> template.sh /
+
+<span class="c"># Install the C libraries because pandas/pysparkml needs to compile C code</span>
+<span class="c">#ARG PANDAS_VERSION=0.24.1</span>
+<span class="k">RUN</span> apk add --no-cache python3-dev libstdc++ <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apk add --no-cache --virtual .build-deps g++ <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apk add --no-cache --update gcc musl-dev libffi-dev openssl-dev <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apk add build-base <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    ln -s /usr/include/locale.h /usr/include/xlocale.h <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    pip3 install <span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.15.1 <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    pip3 install cython <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apk del .build-deps
 
 <span class="c"># Copy the requirements.txt first, for separate dependency resolving and downloading</span>
 <span class="k">COPY</span> requirements.txt /app/
