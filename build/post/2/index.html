@@ -70,12 +70,23 @@
       <div class="container">
         
   <div class="content-section">
-    <h2>Parallel fp-growth algorithm using spark, docker and mongodb (1)</h2>
+    <h2>Association rule mining using the Parallel fp-growth algorithm using spark, docker and mongodb (1)</h2>
     <p>By Carlos Huerta on Jul 27 2020</p>
-    <div><h3>How to build an scalable recomendation engine ⚙️</h3>
+    <div><h3>How to build a scalable recommendation engine ⚙️</h3>
 <p>Last Year in collaboration with <a  target="_blank" href="https://www.linkedin.com/in/ankit001mittal/">Ankit Mittal</a> and <a target="_blank" href="https://www.linkedin.com/in/myuja/">Michael Yuja</a>  we had a project in mind. To develop a <strong>recommendation engine</strong> for the e-commerce website www.agglobal.com that sells hardware solutions in Honduras. The website has listed more than 7000 products and can be very hard for the daily user to navigate around all the different products and categories for them to find what they need.</p>
 <p>Fortunately, we can resort to big-data and data science solutions to solve this issue. 
 Similar to Amazon's "People who also bought X also bought Y..." that displays when browsing through Amazon's humongous catalog; to achieve that, we seek to develop a similar solution.</p>
+<h3>What is a Recommendation engine</h3>
+<p>A recommendation engine can be based on both <strong>explicit</strong> and <strong>implicit</strong> data. In the case of <strong>explicit</strong> like ratings, we could model recommendations using <strong>collaborative filtering</strong> approaches. <strong>Implicit</strong> data, such as product views or transactions, are easier to implement and collect. In the case of agglobal.com that does not (yet) have a user rating for its products, the most sensible approach was to base our recommendation system based on transactional data, which is collected not only from the e-commerce website, but also for in-store transactions.</p>
+<h3>Association Rule mining</h3>
+<p>Association Rule Minning (ARM) and Market Basket Analysis are techniques widely used by marketing, business, and data science teams to increase revenue. They are used to: gain insights about the merchandise, understand why customers make individual purchases, and take actions like; store layouts, which articles to promote or remove, etc.
+In ARM a transaction is defined as a non-repeating set of items or products that compose a purchase of a client. Using this information ARM then tries to find <strong>frequent patterns</strong> associations or correlations in our purchases data. </p>
+<h4>Rule forms</h4>
+<ul>
+<li>Rules outputted by our mining process take the form: <strong>antecedent</strong> -&gt; <strong>consequent</strong> followed by interestingness measures of: <strong>support</strong> and <strong>confidence</strong>. For example the rule apples -&gt; bananas tells us that a client that bough apples is also prone to buy bananas, in the case of support it tells us the <strong>frequency of the rule withing our transactions data</strong>, and the <strong>confidence</strong> tells us the percentage of transactions that contains the antecedent that also contains the consequent, in simple terms, the greater the confidence the 'surer' we are that if our customer bought apples he is going to buy bananas 🍎 -&gt; 🍌.</li>
+</ul>
+<h3>Minning process</h3>
+<p>Because we have to find the frequent itemsets for all items and different combinations of items, finding the associations rules is a very computationally expensive job. We can not just brute-force our way into hundreds of thousands of transactions data. Therefore to main types of algorithms have been proposed, the <strong>a priori algorithm</strong> and the <strong>frequent pattern growth</strong> algorithm. Both of them use clever techniques not to explore the whole set of subsets, but only to explore those that we know are going to be relevant for our analysis. For example, suppose we just have two transactions with a rare product. In that case, we should not consider it for our analysis. Additionally, subsets of other items containing that product are also not to be considered. In contrast to the a priori algorithm which uses a join and prune strategy alongside candidate generation data that will require a large amount of memory, the fp-growth algorithm is a tree-based method that utilizes a pattern growth approach which only considers patterns that actually exist in the data, because it does not need to generate candidate itemsets it uses much less memory space. Since agglobal.com data or any other e-commerce transactions will just continue to grow, it was decided that the fp-growth algorithm was the better-suited candidate.</p>
 <h2>1. Set-up the spark-cluster using docker</h2>
 <p>We are going to use the <strong>Big Data Europe</strong> docker-spark container images as base images for our project. Nevertheless we need to set-up a folder structure as follows:</p>
 <h3>1.1 Spark-master set-up</h3>
@@ -409,8 +420,12 @@ sh /submit.sh
       src="/static/js/bootstrap.bundle.js"></script>
 
     
-<!--
+
 <script>
+  var disqus_config = function () {
+  this.page.url = 'https://charx7.me/post/2/';  // Your page's canonical URL variable
+  this.page.identifier = '2'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
   (function() { // DON'T EDIT BELOW THIS LINE
   var d = document, s = d.createElement('script');
   s.src = 'https://carlos-huerta-blog.disqus.com/embed.js';
@@ -419,7 +434,7 @@ sh /submit.sh
   })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
--->                          
+                          
 
 
   </body>
