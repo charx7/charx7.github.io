@@ -57,6 +57,7 @@ tree
 * `flaskblog.py` and `utils.py` contain the programming logic of our basic blog site :D.  
 
 Let's dive into `flaskblog.py` for a minimal set-up:
+
 <div class="input">
   MY_PROJECT_NAME/flaskblog.py
 </div>
@@ -113,7 +114,7 @@ Don't forget home.html...
 </body>
 </html>
 ```
-You may have noticed some veeery strange naming in the `flaskblog.py` file we named our home page `index.htm`, the reason behind this is that when we will generate the static files to be deployed into *github-pages* we will need an entry point named `index.html` that alongside how `frozen-flask` freezes our flask web-page. More of this in the upcoming blog posts...
+You may have noticed some veeery strange naming in the `flaskblog.py` file, we named our home page `index.html`, because how `frozen-flask` freezes our flask web-page and also because we will need an entry point named `index.html` when generating the static files to be deployed into *github-pages*.  More of this in the upcoming blog posts...
 We should be able to run a basic functioning web-page *locally* via the `python flaskblog.py` command! et voila we now have the basic structure for a simple personal blog page.
 
 In part 2, we will see how we can write our blog content in the *markdown* format and parse it to working *html* that will be rendered by our templates.
