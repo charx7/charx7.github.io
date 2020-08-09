@@ -123,10 +123,11 @@
 <li>The <code>templates</code> folder will be containing our necessary <code>jinja</code> templates that will be rendered using flask.</li>
 <li><code>flaskblog.py</code> and <code>utils.py</code> contain the programming logic of our basic blog site :D.  </li>
 </ul>
-<p>Let's dive into <code>flaskblog.py</code> for a minimal set-up:
+<p>Let's dive into <code>flaskblog.py</code> for a minimal set-up:</p>
 <div class="input">
   MY_PROJECT_NAME/flaskblog.py
-</div></p>
+</div>
+
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
 <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">get_blog_posts</span>
 
@@ -181,7 +182,7 @@
 </code></pre></div>
 
 
-<p>You may have noticed some veeery strange naming in the <code>flaskblog.py</code> file we named our home page <code>index.htm</code>, the reason behind this is that when we will generate the static files to be deployed into <em>github-pages</em> we will need an entry point named <code>index.html</code> that alongside how <code>frozen-flask</code> freezes our flask web-page. More of this in the upcoming blog posts...
+<p>You may have noticed some veeery strange naming in the <code>flaskblog.py</code> file, we named our home page <code>index.html</code>, because how <code>frozen-flask</code> freezes our flask web-page and also because we will need an entry point named <code>index.html</code> when generating the static files to be deployed into <em>github-pages</em>.  More of this in the upcoming blog posts...
 We should be able to run a basic functioning web-page <em>locally</em> via the <code>python flaskblog.py</code> command! et voila we now have the basic structure for a simple personal blog page.</p>
 <p>In part 2, we will see how we can write our blog content in the <em>markdown</em> format and parse it to working <em>html</em> that will be rendered by our templates.</p></div>
     
