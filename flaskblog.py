@@ -12,7 +12,7 @@ def index():
   bio_small = """
   Data Science and Machine Learning Enthusiast, 
   currently working with Dynamic Bayesian Networks models for gene network reconstruction.
-  Love programming, modelling, web-development and data engineering.
+  Love programming, modelling, web-development, and data engineering.
   Curious for A.I. research - model explainability and Natural Language Processing.
 
   Ensembles over Deep Neural Networks!
