@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% if description %}
+      <meta name="description" 
+      content="{{ description }}">
+    {% endif %}
+    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173578745-1"></script>
     <script>

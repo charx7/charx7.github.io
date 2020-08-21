@@ -1,5 +1,5 @@
 ---
-type: How to create a Static Blog from Scratch Using Python [1]
+type: blog-post
 post_id: 1
 tags: python, flask, frozen-flask, jinja, markdown
 author: Carlos Huerta 

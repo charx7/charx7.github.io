@@ -6,7 +6,30 @@ import os
 
 CONTENT_PATH = "content/blog/"
 
+# TODO refactor get_portlio_posts and get_blog_posts funcs into one
+def get_portfolio_posts():
+  '''
+    Returns:
+      (list(dict)): list of all written portfolio posts parsed into python
+                    dictionaries.
+  '''
+  CONTENT_PATH = "content/portfolio/"
+
+  files_list = os.listdir(CONTENT_PATH)
+  
+  portfolio_posts_dict_list = []
+  for file in files_list:
+    FILE_PATH = CONTENT_PATH + file
+
+    portfolio_posts_dict_list.append(transform_content(FILE_PATH))
+
+  return portfolio_posts_dict_list
+
 def get_blog_posts():
+  '''
+    Returns:
+      (list<dict>): list of all the written blog posts in dictonary format 
+  '''
   files_list = os.listdir(CONTENT_PATH)
   
   blog_posts_dict_list = []
@@ -18,6 +41,22 @@ def get_blog_posts():
   return blog_posts_dict_list
 
 def transform_content(PATH_TO_CONTENT):
+  '''
+    Parses the written markdown files on the content path and transforms them into
+    a dictonary of the form:
+    dict = {
+      **metadata_keys: metadata_values,
+      "html": parsed html value using python's Markdown package
+    }
+
+    *NOTE: Metadata keys are defined on the markdown files as
+    ---
+    key_name: value
+    ---
+
+    Returns:
+      dict: A blog post parsed into a dictionary object 
+  '''
   # open the md file and transform into html
   with open(PATH_TO_CONTENT, "r") as file:    
     content_file = file.read()

@@ -2,13 +2,18 @@ import json
 
 from flask import Flask, render_template, redirect, url_for, abort
 from pygments.formatters import HtmlFormatter
-from utils import get_blog_posts
+from utils import get_blog_posts, get_portfolio_posts
 
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/index.html")
 def index():
+  DEFAULT_DESCRIPTION = """
+  Carlos Huerta blog/portfolio page on data science and programming. 
+  /blog/ page contains tutorials about DS and /portfolio/ shows some of my projects.
+  """
+
   bio_small = """
   Data Science and Machine Learning Enthusiast, 
   currently working with Dynamic Bayesian Networks models for gene network reconstruction.
@@ -20,7 +25,8 @@ def index():
 
   blog_posts = get_blog_posts()
 
-  return render_template('home.html', posts=blog_posts, num_posts=len(blog_posts), bio_small=bio_small)
+  return render_template('home.html', posts=blog_posts,
+    num_posts=len(blog_posts), bio_small=bio_small, description = DEFAULT_DESCRIPTION)
 
 @app.route("/about.html")
 def about():
@@ -28,7 +34,20 @@ def about():
   
 @app.route("/portfolio.html")
 def portfolio():
-  return render_template('portfolio.html', title='Portfolio')
+  desc = """
+  Carlos Huerta - Personal portfolio page showcasing some of my projects.
+  """
+  portfolio_posts = get_portfolio_posts()
+  
+  # calculate the number of rows to create inside the portfolio template
+  num_port_posts = len(portfolio_posts)
+  if num_port_posts > 2:
+    num_rows = 2 % num_port_posts
+  else:
+    num_rows = 1
+
+  return render_template('portfolio.html',
+    title='Portfolio', num_rows = num_rows, description = desc)
 
 @app.route("/post/<post_id>/")
 def post(post_id):
