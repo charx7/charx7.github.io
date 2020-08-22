@@ -1,4 +1,5 @@
 import json
+import math
 
 from flask import Flask, render_template, redirect, url_for, abort
 from pygments.formatters import HtmlFormatter
@@ -31,23 +32,33 @@ def index():
 @app.route("/about.html")
 def about():
   return render_template('about.html', title='About')
-  
+
 @app.route("/portfolio.html")
 def portfolio():
   desc = """
   Carlos Huerta - Personal portfolio page showcasing some of my projects.
   """
   portfolio_posts = get_portfolio_posts()
+  # sort posts by id
+  portfolio_posts = sorted(portfolio_posts, key=lambda x: int(x['portfolio_id'][0]))
+
+  # transform into list of lists with len 2
+  num_rows = math.ceil(len(portfolio_posts) / 2) # because we have 2 elements per row
+  t_portfolio_posts = [[] for _ in range(num_rows)]
   
-  # calculate the number of rows to create inside the portfolio template
-  num_port_posts = len(portfolio_posts)
-  if num_port_posts > 2:
-    num_rows = 2 % num_port_posts
-  else:
-    num_rows = 1
+  curr_list_idx = 0
+  for idx in range(len(portfolio_posts)):
+    # modify the index of the list using modulo max row operations
+    if idx > 0 and idx % 2 == 0:
+      curr_list_idx = curr_list_idx + 1
+
+    # append to the list of lists
+    t_portfolio_posts[curr_list_idx].append(portfolio_posts[idx])
 
   return render_template('portfolio.html',
-    title='Portfolio', num_rows = num_rows, description = desc)
+    title='Portfolio',
+    description = desc,
+    posts_list = t_portfolio_posts)
 
 @app.route("/post/<post_id>/")
 def post(post_id):
