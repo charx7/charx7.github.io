@@ -60,6 +60,28 @@ def portfolio():
     description = desc,
     posts_list = t_portfolio_posts)
 
+@app.route("/portfolio/<portfolio_post_id>/")
+def portfolio_post(portfolio_post_id):
+  # Get the specific post fromt the list of portfolio posts
+  portfolio_posts = get_portfolio_posts()
+
+  # grab the desired post from the list of portfolio items
+  found_post = None
+  for post in portfolio_posts:
+    if portfolio_post_id == post['portfolio_id']:
+      found_post = post
+
+  if found_post:
+    # CSS addition for syntax highlighting
+    # formatter = HtmlFormatter(style="colorful", full=True, cssclass="codehilite")
+    # css_string = formatter.get_style_defs()
+    # md_css_string = "<style>" + css_string + "</style>"
+    #md_css_string = ''
+    
+    return render_template('portfolio_post.html', title = post['title'], post = found_post)
+  else:
+    return abort(404)
+
 @app.route("/post/<post_id>/")
 def post(post_id):
   # Get the specific post from the list of posts

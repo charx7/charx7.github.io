@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <div class="content-section">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='images/' + post.image_name) }}" 
+          class="w3-image" alt="" style="width: 100%; max-width: 300px;">  
+
+      </div>
+      <div class="col-md-8">
+        <h2>
+          {{ post.title }}
+        </h2>
+        <p>{{ post.summary }}</p>
+
+        <hr class="my-4">
+              
+        <p>Tags: {{ post.tags }}</p>
+        <p>By {{ post.author }} on {{ post.date }}</p>
+      </div>
+    </div>
+    
+
+    <hr class="my-4">
+    
+    <div>{{ post.html | safe}}</div>
+   
+    <br>
+   
+  </div>
+{% endblock content %}

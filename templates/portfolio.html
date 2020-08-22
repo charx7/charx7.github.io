@@ -18,9 +18,10 @@
             <div class="card-body">
               <h5 class="card-title">
               <a class="article-title" 
-                 href="{{ url_for('post', post_id = post.post_id)  }}">{{ post['title'] }}</a></h5>
+                 href="{{ url_for('portfolio_post', portfolio_post_id = post.portfolio_id)  }}">
+                 {{ post['title'] }}</a>
+              </h5>
               <p class="card-text">{{ post['summary'] }}.</p>
-              
               <hr class="my-4">
               <p class="card-text"><small class="text-muted">Last updated {{ post['date'] }}</small></p>
             </div>
