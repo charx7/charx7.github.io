@@ -24,9 +24,21 @@ By using `docker` as a way to test and deploy the necessary infrastructure; we m
   <img src="/static/images/docker-spark.png"
       alt=""
       style="text-align: center; margin-right: 10px;
-      width: 100%; max-width: 300px;" />
+      width: 100%; max-width: 50rem;" />
   </br>
 </div>
 
 # Results
 Astounding results were found after model development; the mined association rules managed to infer a lot of relevant recommendations such as: if you are buying a hammer, why not purchase some nails? It also managed to find some not so apparent suggestions like (parts) product replacements. A human making product recommendations by hand would have needed months if not years to go through the entire catalogue and suggest relevant items.
+
+All the code is available at the gh repository [Here](https://github.com/charx7/Scalable-Computing-recom-engine).
+<div style="text-align: center;">
+  <img src="/static/images/recom-example.png"
+      alt=""
+      style="text-align: center; margin-right: 10px;
+      width: 100%; max-width: 50rem;" />
+  </br>
+</div>
+
+* **Want to try it for yourself?** Go to [agglobal](https://www.agglobal.com) and try it with the product code `035858` (Warning: Spanish)
+* **Interested?** Contact me if you would like to implement something similar in your website.
