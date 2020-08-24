@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173578745-1"></script>
+    <script>
+      if (window.location.host==="charx7.me" || window.location.host === "www.charx7.me") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-173578745-1');
+      }
+    </script>
+
+    
+      <title>Carlos Portfolio - Smart Searches</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" 
+      href="/static//css/bootstrap.css">
+    <link rel="stylesheet" type="text/css"
+      href="/static//css/main.css">  
+      <!-- Font Awsome CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css"
+      href="/static//css/colorful.css">
+    
+  </head>
+
+  <!-- Pigments for code CSS -->
+  
+
+  <body>
+    <header class="site-header"></header>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="/">Carlos Huerta</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="/about.html">About</a>
+            <a class="nav-item nav-link" href="/index.html">Blog</a>
+            <a class="nav-item nav-link" href="/portfolio.html">Portfolio</a>
+          </div>
+          <!-- Navbar Right Side 
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/login">Login</a>
+            <a class="nav-item nav-link" href="/register">Register</a>
+          </div>
+          -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Paralax Image-->
+    <div class = "parallax">
+      <!-- Paralax Text-->
+      <div class = "container-title-text">
+        <h1 id="parallax-title">Carlos Huerta - Data Science Blog</h1>
+      </div>
+    </div>
+    
+    <!-- Main content-->
+    <div class="main-content">
+      <div class="container">
+        
+  <div class="content-section">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/static/images/market-basket.jpg" 
+          class="w3-image" alt="" style="width: 100%; max-width: 300px;">  
+
+      </div>
+      <div class="col-md-8">
+        <h2>
+          Product Recommendation Engine
+        </h2>
+        <p>People who also bought X also bought Y... product(s) recommendations for agglobal.com</p>
+
+        <hr class="my-4">
+              
+        <p>Tags: spark, python, docker, airflow</p>
+        <p>By Carlos Huerta on Aug 21 2020</p>
+      </div>
+    </div>
+    
+
+    <hr class="my-4">
+    
+    <div><h1>Summary</h1>
+<p>I built a products recommendation engine for the e-commerce website <a href="https://www.agglobal.com/">agglobal.com</a> a large hardware store vendor in Honduras. The project was done using spark, mongo, docker and python.  First implemented the parallel FP-growth algorithm and then migrated to pyspark.ml library.</p>
+<h1>Motivation</h1>
+<p>After core selling features have been tested and implemented every e-commerce should invest on product recommendations, especially if your catalogue consists of <strong>thousands of products</strong> which <strong>can be very difficult to navigate</strong> and display to the interested customers.  That was the case for agglobal.com whose catalogue contains more than 8,000 products.  A recommendations engine can be a useful way to <strong>link</strong> the interested (but sometimes very busy <strong>customer</strong>) with the products they are looking for, even if they do not know the specifics of your products. By using data from previous transactions of physical retail stores, we mined and detected association rules that helped display these recommendations in the product page.</p>
+<h1>Challenges</h1>
+<p>The input data (transactions) consists of millions of rows, so preprocessing to get the desired input to minimize computation time was necessary. Additionally building and deploying the infrastructure which can handle this volume of data was not an easy task. </p>
+<h1>Solutions</h1>
+<p>By using <code>docker</code> as a way to test and deploy the necessary infrastructure; we managed to build a platform-independent microservice oriented architecture that was easy to maintain and deploy locally and eventually in a cloud provider. And by choosing <code>spark</code> as our computations engine, we managed to solve for both present and future big-data workloads that agglobal will continue to use for its future projects. </p>
+<div style="text-align: center;">
+  <img src="/static/images/docker-spark.png"
+      alt=""
+      style="text-align: center; margin-right: 10px;
+      width: 100%; max-width: 50rem;" />
+  </br>
+</div>
+
+<h1>Results</h1>
+<p>Astounding results were found after model development; the mined association rules managed to infer a lot of relevant recommendations such as: if you are buying a hammer, why not purchase some nails? It also managed to find some not so apparent suggestions like (parts) product replacements. A human making product recommendations by hand would have needed months if not years to go through the entire catalogue and suggest relevant items.</p>
+<p>All the code is available at the gh repository <a href="https://github.com/charx7/Scalable-Computing-recom-engine">Here</a>.
+<div style="text-align: center;">
+  <img src="/static/images/recom-example.png"
+      alt=""
+      style="text-align: center; margin-right: 10px;
+      width: 100%; max-width: 50rem;" />
+  </br>
+</div></p>
+<ul>
+<li><strong>Want to try it for yourself?</strong> Go to <a href="https://www.agglobal.com">agglobal</a> and try it with the product code <code>035858</code> (Warning: Spanish)</li>
+<li><strong>Interested?</strong> Contact me if you would like to implement something similar in your website.</li>
+</ul></div>
+   
+    <br>
+    <!-- Needed for disqus-->
+    <div id="disqus_thread"></div>
+   
+  </div>
+
+        
+        <!-- Footer -->
+        <div class="border-top pt-3">
+          <small class="text-muted">
+              Made with ❤️ using flask, frozen-flask, Bootstrap
+          </small>
+
+          <div class="right-footer">
+            <a href="https://github.com/charx7" style="color: black!important; text-decoration: none;">
+              <i class="fa fa-github" style="padding-right: 16px"></i>
+            </a>
+    
+            <a href="https://www.linkedin.com/in/carlos-rodolfo-huerta-santiago-2b5609100/" style="color: black!important; text-decoration: none">
+              <i class="fa fa-linkedin" style="padding-right: 16px"></i>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script
+			  src="https://code.jquery.com/jquery-3.5.1.min.js"
+			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+    <!--  BS js -->
+    <script type="text/javascript"
+      src="/static/js/bootstrap.bundle.js"></script>
+
+    
+
+<script>
+  var disqus_config = function () {
+  this.page.url = 'https://charx7.me/portfolio/1/';  // Your page's canonical URL variable
+  this.page.identifier = 'p_id_1'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://carlos-huerta-blog.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                          
+
+
+  </body>
+</html>

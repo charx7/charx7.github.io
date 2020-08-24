@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173578745-1"></script>
+    <script>
+      if (window.location.host==="charx7.me" || window.location.host === "www.charx7.me") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-173578745-1');
+      }
+    </script>
+
+    
+      <title>Carlos Portfolio - Smart Searches</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" 
+      href="/static//css/bootstrap.css">
+    <link rel="stylesheet" type="text/css"
+      href="/static//css/main.css">  
+      <!-- Font Awsome CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css"
+      href="/static//css/colorful.css">
+    
+  </head>
+
+  <!-- Pigments for code CSS -->
+  
+
+  <body>
+    <header class="site-header"></header>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="/">Carlos Huerta</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="/about.html">About</a>
+            <a class="nav-item nav-link" href="/index.html">Blog</a>
+            <a class="nav-item nav-link" href="/portfolio.html">Portfolio</a>
+          </div>
+          <!-- Navbar Right Side 
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/login">Login</a>
+            <a class="nav-item nav-link" href="/register">Register</a>
+          </div>
+          -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Paralax Image-->
+    <div class = "parallax">
+      <!-- Paralax Text-->
+      <div class = "container-title-text">
+        <h1 id="parallax-title">Carlos Huerta - Data Science Blog</h1>
+      </div>
+    </div>
+    
+    <!-- Main content-->
+    <div class="main-content">
+      <div class="container">
+        
+  <div class="content-section">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/static/images/robot.jpg" 
+          class="w3-image" alt="" style="width: 100%; max-width: 300px;">  
+
+      </div>
+      <div class="col-md-8">
+        <h2>
+          Twitter Spam Bot Classifier
+        </h2>
+        <p>Spam-bot classification of tweets using NLP extracted features and meta-features with traditional machine learning and deep learning</p>
+
+        <hr class="my-4">
+              
+        <p>Tags: python, scikit-learn, tensorflow, tf-idf, w2v, NLP</p>
+        <p>By Carlos Huerta on Aug 23 2020</p>
+      </div>
+    </div>
+    
+
+    <hr class="my-4">
+    
+    <div><h1>Summary</h1>
+<p><strong>BotDetector3000</strong> was the capstone project for RuG's 2019 machine-learning course. I worked alongside <a href="https://github.com/PGiagkoulas">Panagiotis Giagkoulas</a> to develop a twitter spam-bot classifier that uses both; extracted NLP features and tweet metadata to detect whether or not a particular tweet was written by either a bot or a human. Training data was taken from the cresci-2017 dataset available <a href="https://botometer.iuni.iu.edu/bot-repository/">here</a>.</p>
+<h1>Motivation</h1>
+<p>Who hasn't eagerly opened their twitter homepage clicked on the most recent trend to get informed to find out that it is someone trying to sell you something, or worse it is a blatant scam targeted at the most naive users. I am sure most of you guys sure remember a certain Nigerian prince with a vast fortune wanting your help? This and the recent rise of fake-news trends, motivated us to develop a machine learning model that would help us to distinguish real human to human interaction across social media, in our specific case it was targeted at twitter.  </p>
+<h1>Challenges</h1>
+<p>Twitter has a lot of available data; the main issue is that most of it is unlabeled and unstructured. We solved this by using Indiana's University Network and Science Institute bot repository which hosts many datasets of tweets of previously verified human accounts and identified (and now suspended) bot-accounts. Nevertheless, both human and bot tweets are especially problematic when it comes to NLP feature extraction. One example of this, you would think that a normal person would write: </p>
+<blockquote>
+<p>Oh what a lovely day, the weather has been fantastic this week. </p>
+</blockquote>
+<p>But no! Normally tweets are most similar to:</p>
+<blockquote>
+<p>Oh gr8 😀 here comez da sun 🌞 🕶️ #week#sunlight</p>
+</blockquote>
+<p>Now, normally when you do NLP feature extraction, it is a common practice to tokenize and stem your documents to get a vector representation that can be fed into our models. Now let's see what tokenization + stemming does to the first 'correctly written text'. First, we remove stop-words:</p>
+<blockquote>
+<p>lovely day weather fantastic week</p>
+</blockquote>
+<p>Now applying NLTK's Snowball stemmer: </p>
+<blockquote>
+<p>love day weather fantast week</p>
+</blockquote>
+<p>Our document has not lost its meaning and retains much of the important information that contained the original text. Therefore we can proceed without any issues to tokenize and transform into vector form the new document. </p>
+<p>Now we will do the same thing to our tweet. </p>
+<p>Stop word removal:</p>
+<blockquote>
+<p>gr8 comez da sun #week#sunlight</p>
+</blockquote>
+<p>Snowball stemmer:</p>
+<blockquote>
+<p>gr8 comez da sun # week # sunlight</p>
+</blockquote>
+<p>As you can see, it did not change so much form the original tweet, so information extracted from this particular document will not be very useful for our model. 😞</p>
+<h2>Model Pipe-Line</h2>
+<p><div style="text-align: center;">
+  <img src="/static/images/nlp-diagram.png"
+      alt=""
+      style="text-align: center; margin-right: 10px;
+      width: 100%; max-width: 90rem;" />
+  </br>
+</div></p>
+<h1>Solutions</h1>
+<p>A lot of pre-processing was necessary to remove most of the slang, emojis, hashtags, URL's, poorly written tweets, most of the time of the project was spent on data cleaning and pre-processing. We managed to implement a pretty good tweet 'cleanser' that would transform  </p>
+<blockquote>
+<p>Oh gr8 😀 here comez da sun 🌞 🕶️ #week#sunlight</p>
+</blockquote>
+<p>Into:</p>
+<blockquote>
+<p>here com sun week sunlight</p>
+</blockquote>
+<p>Which still losses some information, but it was sufficient enough for our models. Afterwards, we used a term frequency-inverse document frequency (tf-idf) as a baseline vector representation of the cleansed tweets and then we moved into a word to vector (w2v) model to encode a more sophisticated language model. Then we ran multiple experiments using traditional ml-methods like support vector machines, logistic regression and decision trees to get the most accurate result.</p>
+<h1>Results</h1>
+<p>Our pure NLP model achieved a maximum of 84% accuracy on the test set after hyperparameter tunning; it used custom 200 dimensions word embedding and an SVM with an RBF kernel. The meta-data focused model achieved a whopping 87% accuracy on the test set! Proving that sometimes meta-data is as useful as (or better) as the data itself. </p>
+<p><strong>FUN FACTS</strong>: Bots tend to write better english than most humans :D and they really love their URL's</p>
+<ul>
+<li><strong>Want to know more?</strong> Leave a comment and I will share to you the full final report.</li>
+<li><strong>Want to see the code?</strong> It is open-source and available at <a href="https://github.com/charx7/MachineLearning">GH</a>.</li>
+</ul></div>
+   
+    <br>
+    <!-- Needed for disqus-->
+    <div id="disqus_thread"></div>
+   
+  </div>
+
+        
+        <!-- Footer -->
+        <div class="border-top pt-3">
+          <small class="text-muted">
+              Made with ❤️ using flask, frozen-flask, Bootstrap
+          </small>
+
+          <div class="right-footer">
+            <a href="https://github.com/charx7" style="color: black!important; text-decoration: none;">
+              <i class="fa fa-github" style="padding-right: 16px"></i>
+            </a>
+    
+            <a href="https://www.linkedin.com/in/carlos-rodolfo-huerta-santiago-2b5609100/" style="color: black!important; text-decoration: none">
+              <i class="fa fa-linkedin" style="padding-right: 16px"></i>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script
+			  src="https://code.jquery.com/jquery-3.5.1.min.js"
+			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+    <!--  BS js -->
+    <script type="text/javascript"
+      src="/static/js/bootstrap.bundle.js"></script>
+
+    
+
+<script>
+  var disqus_config = function () {
+  this.page.url = 'https://charx7.me/portfolio/2/';  // Your page's canonical URL variable
+  this.page.identifier = 'p_id_2'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://carlos-huerta-blog.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                          
+
+
+  </body>
+</html>

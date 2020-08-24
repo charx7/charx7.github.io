@@ -151,3 +151,12 @@ a.article-title:hover {
 .small-bio-icon-first {
   padding-right: 0.5rem;
 }
+
+blockquote {
+  font-family: "Open Sans", sans-serif;
+  border-left: .25em solid #2176FF; /* Github color #DFE2E5*/
+  background-color: #f7fcff; /* Really dim blue */
+  color: #455A64;
+  padding: 0 1em;
+  margin: 0;
+}
