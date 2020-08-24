@@ -12,7 +12,8 @@ date: Aug 24 2020
 We implemented and deployed to GCP services an `Elasticsearch` a full-text real-time smart search engine and `Kibana` for analytics and monitoring, reducing the back-end API server load and improving query response time and relevancy of the results. Additionally, we set-up an Apache `Airflow` workflows service in the back-end server to automate various maintenance tasks. 
 
 # Motivation  
-Every e-commerce has faced the challenge of **query performance** and **relevancy** of the displayed search results. What would your query output be if given a customer query like 'construction materials' if none of your products (or product categories) is exactly named like it?
+
+> Every e-commerce has faced the challenge of **query performance** and **relevancy** of the displayed search results. What would your query output be if given a customer query like 'construction materials' if none of your products (or product categories) is exactly named like it?
 
 **Agglobal** faced this same challenge as the past search results were given using a full-text search on just the name of the products, so relevant information contained in other characteristics like product descriptions and product characteristics were not taken into account when producing query outputs. Even though **Agglobal** initial strategy to run a full-text search with raw-SQL on via an API was sufficient, as the amount of traffic and products increased, directly smashing the DB was not such a good idea anymore. This is were Elasticsearch provided a great alternative to 'understand' customer queries better and handle increasingly complex index searches.  
 
@@ -36,6 +37,6 @@ Several iterations of the most efficient query and scoring function were (and ar
 # Results
 Our initial results are very promising, as queries which previously reported zero results are now effectively outputting the correct products. Some examples:
 
-* Query('lamparaa colgante') which tranlates into 'hangingg lamps' (misspelling intended) previously output zero results. Now outputs the following products: 'roof hanging lamps', 'industrial lamps' and some replacement parts like 'photocells'.
+* **Query('lamparaa colgante')** which tranlates into 'hangingg lamps' (misspelling intended) previously output zero results. Now outputs the following products: 'roof hanging lamps', 'industrial lamps' and some replacement parts like 'photocells'.
 
-* Query('puntas desarmador') which is a replacement part of a screwdriver now outputs 'several screwdrivers' and 'screwdriver bits'. An important thing to notice is that the 'screwdriver bits' product was named: 'PUNTAS DES.' in which 'DES.' is an abbreviation of the product 'desarmador' that means screwdriver. 
+* **Query('puntas desarmador')** which is a replacement part of a screwdriver now outputs 'several screwdrivers' and 'screwdriver bits'. An important thing to notice is that the 'screwdriver bits' product was named: 'PUNTAS DES.' in which 'DES.' is an abbreviation of the product 'desarmador' that means screwdriver. 

@@ -9,7 +9,7 @@ image_name: market-basket.jpg
 date: Aug 21 2020
 ---
 # Summary
-I built a products recommendation engine for the e-commerce website agglobal.com a large hardware store vendor in Honduras. The project was done using spark, mongo, docker and python.  First implemented the parallel FP-growth algorithm and then migrated to pyspark.ml library.
+I built a products recommendation engine for the e-commerce website [agglobal.com](https://www.agglobal.com/) a large hardware store vendor in Honduras. The project was done using spark, mongo, docker and python.  First implemented the parallel FP-growth algorithm and then migrated to pyspark.ml library.
 
 # Motivation
 After core selling features have been tested and implemented every e-commerce should invest on product recommendations, especially if your catalogue consists of **thousands of products** which **can be very difficult to navigate** and display to the interested customers.  That was the case for agglobal.com whose catalogue contains more than 8,000 products.  A recommendations engine can be a useful way to **link** the interested (but sometimes very busy **customer**) with the products they are looking for, even if they do not know the specifics of your products. By using data from previous transactions of physical retail stores, we mined and detected association rules that helped display these recommendations in the product page.
