@@ -72,4 +72,4 @@ Our pure NLP model achieved a maximum of 84% accuracy on the test set after hype
 **FUN FACTS**: Bots tend to write better english than most humans :D and they really love their URL's
 
 * **Want to know more?** Leave a comment and I will share to you the full final report.
-* **Want to see the code?** It is open-source available at [GH](https://github.com/charx7/MachineLearning).
+* **Want to see the code?** It is open-source and available at [GH](https://github.com/charx7/MachineLearning).
